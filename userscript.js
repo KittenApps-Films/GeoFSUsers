@@ -19,5 +19,10 @@ window.addEventListener('load', function() {
     UsersScript.type = 'text/javascript';
     UsersScript.id = "UsersScript";
     document.body.appendChild(UsersScript);
+    var UsersList = document.createElement('script');
+    UsersList.src="https://kittenapps-films.github.io/GeoFSUsers/convert.js";
+    UsersList.type = 'module';
+    UsersList.id = "UsersScript";
+    document.body.appendChild(UsersList);
     console.log("GeoFSUsers installed");
 })
