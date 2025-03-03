@@ -4,13 +4,13 @@ d.id = "test2";
 
 var selected = "no_one_selected";
 
-var players = {
-    "KittenFilms[KFA]": "kittenapps-films.github.io/geofs/kfa/"
-}
+//var players = {
+    //"KittenFilms[KFA]": "kittenapps-films.github.io/geofs/kfa/"
+//}
 
 function linkGet() {
-    if (selected in players) {
-        return '//'+players[selected];
+    if (selected in users) {
+        return '//'+users[selected];
         console.log("e")
     } else {
         return '//google.com/search?q=GeoFS+user+'+selected;
