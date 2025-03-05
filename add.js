@@ -10,7 +10,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var link = url.searchParams.get("l");*/
 
-export function update(link,user) {
+export async function update(link,user) {
 
 users[user] = link
 var content = `
