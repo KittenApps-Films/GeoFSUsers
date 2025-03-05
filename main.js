@@ -11,10 +11,8 @@ var selected = "no_one_selected";
 function linkGet() {
     if (selected in users) {
         return '//'+users[selected];
-        console.log("e")
     } else {
         return '//google.com/search?q=GeoFS+user+'+selected;
-        console.log("n")
     }
 }
 
