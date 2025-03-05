@@ -12,13 +12,13 @@ var link = url.searchParams.get("l");
 
 export async function update(link,user) {
 
-users[user] = link
+/*users[user] = link
 var content = `
 export var users = ${JSON.stringify(users)}
 `
 var url_string = window.location.href; 
 var url = new URL(url_string);
-var name = url.searchParams.get("n");
+var name = url.searchParams.get("n");*/
 
 const octokit = new Octokit({
   auth: get(),
