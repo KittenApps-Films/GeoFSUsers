@@ -10,7 +10,7 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var link = url.searchParams.get("l");
 
-//export async function update(link,user) {
+export async function update(link,user) {
 
 users[user] = link
 var content = `
@@ -44,7 +44,7 @@ var newFile = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}',
     'X-GitHub-Api-Version': '2022-11-28'
   }
 })
-//}
+}
 export function one() {
   console.log("one run")
 }
