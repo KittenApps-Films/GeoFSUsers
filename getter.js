@@ -21,6 +21,7 @@ var oldfile = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}',
 function getter(data) {
   var a = atob(data)
   var b = a.slice(19)
+  console.log(b);
   var c = JSON.parse(b)
   return c
 }
