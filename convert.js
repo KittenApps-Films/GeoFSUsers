@@ -4,5 +4,5 @@ import { update } from "./add.js"
 import { getContents } from "./getter.js"
 globalThis.users = users
 globalThis.update = update
-globalThis.update = getContents
+globalThis.getContents = getContents
 console.log("users installed")
