@@ -17,12 +17,15 @@ var oldfile = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}',
     'Accept' : 'application/vnd.github.html+json'
   }
 })
-
+console.log(oldfile.data.content);
 function getter(data) {
+  console.log(data);
   var a = atob(data)
+  console.log(a);
   var b = a.slice(19)
   console.log(b);
   var c = JSON.parse(b)
+  console.log(c);
   return c
 }
 var filecontents = getter(oldfile.data.content)
