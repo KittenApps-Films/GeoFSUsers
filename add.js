@@ -46,5 +46,5 @@ var newFile = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}',
 })
 }
 export function one() {
-  console.log("one run")
+  console.log(this)
 }
