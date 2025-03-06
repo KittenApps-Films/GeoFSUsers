@@ -37,3 +37,4 @@ var config = {
     characterData: true
 };
 observer.observe(targeter, config);
+one()
