@@ -1,6 +1,7 @@
 import { users } from "https://kittenapps-films.github.io/GeoFS_Wiki/GeoFSUsers.js"
 import { get } from 'https://kittenapps-films.github.io/edit/code.js'
 import { Octokit } from "https://esm.sh/@octokit/core";
+import { getContents } from "./getter.js"
 
 /*var url_string = window.location.href; 
 var url = new URL(url_string);
@@ -12,13 +13,15 @@ var link = url.searchParams.get("l");*/
 
 export async function update(link,user, edit = false) {
 
-const hasUser = user in users;
+var listOfUsers = getContents()
+
+const hasUser = user in listOfUsers;
 
 if (hasUser) {edit = false};
 
 if (hasUser || edit) {
   
-  users[user] = link
+  listOfUsers[user] = link
   var content = `export var users = ${JSON.stringify(users)}`
   /*var url_string = window.location.href; 
   var url = new URL(url_string);
