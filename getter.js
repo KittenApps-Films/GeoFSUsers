@@ -28,4 +28,3 @@ var filecontents = getter(oldfile.data.content)
 
 return filecontents
 }
-var b = update()
