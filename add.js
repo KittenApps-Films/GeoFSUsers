@@ -10,42 +10,47 @@ var url_string = window.location.href;
 var url = new URL(url_string);
 var link = url.searchParams.get("l");*/
 
-export async function update(link,user) {
+export async function update(link,user, edit = false) {
 
-users[user] = link
-var content = `
-export var users = ${JSON.stringify(users)}
-`
-/*var url_string = window.location.href; 
-var url = new URL(url_string);
-var name = url.searchParams.get("n");*/
+const hasUser = user in users;
 
-const octokit = new Octokit({
-  auth: get(),
-})
+if (hasUser) {edit = false};
 
-var old = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-  owner: 'KittenApps-Films',
-  repo: 'GeoFS_Wiki',
-  path: 'GeoFSUsers.js',
-  headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-})
-var commiter  = `Adding user ${user} to users addon`
-var newFile = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
-  owner: 'KittenApps-Films',
-  repo: 'GeoFS_Wiki',
-  path: 'GeoFSUsers.js',
-  message: 'added to GeoFSUsers.js',
-  committer: {
-    name: commiter,
-    email: 'kittenappsandfilms@gmail.com'
-  },
-  content: btoa(content),
-  sha: old.data.sha,
-  headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-})
+if (hasUser || edit) {
+  
+  users[user] = link
+  var content = `export var users = ${JSON.stringify(users)}`
+  /*var url_string = window.location.href; 
+  var url = new URL(url_string);
+  var name = url.searchParams.get("n");*/
+
+  const octokit = new Octokit({
+    auth: get(),
+  })
+
+  var old = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+    owner: 'KittenApps-Films',
+    repo: 'GeoFS_Wiki',
+    path: 'GeoFSUsers.js',
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
+  var commiter  = edit ? `Editing user ${user}` : `Adding user ${user} to users addon`;
+  var newFile = await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+    owner: 'KittenApps-Films',
+    repo: 'GeoFS_Wiki',
+    path: 'GeoFSUsers.js',
+    message: 'added to GeoFSUsers.js',
+    committer: {
+      name: commiter,
+      email: 'kittenappsandfilms@gmail.com'
+    },
+    content: btoa(content),
+    sha: old.data.sha,
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
+    }
+  })
+}
 }
