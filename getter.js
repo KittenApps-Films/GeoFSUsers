@@ -17,6 +17,7 @@ var oldfile = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}',
     'Accept' : 'application/vnd.github.html+json'
   }
 })
+console.log(oldfile);
 console.log(oldfile.data.content);
 function getter(data) {
   console.log(data);
