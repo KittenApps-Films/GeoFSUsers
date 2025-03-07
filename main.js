@@ -1,12 +1,13 @@
+if (geofs.userRecord.callsign in getContents()) {
+    var url = prompt("Your username isn't in the GeoFS Username addon system, please enter the URL you would like to be identified with");
+    update(url, geofs.userRecord.callsign);
+}
+
 console.log("GeoFSUsers running");
 var d = document.getElementsByClassName("geofs-user-dialog")[0];
 d.id = "test2";
 
 var selected = "no_one_selected";
-
-//var players = {
-    //"KittenFilms[KFA]": "kittenapps-films.github.io/geofs/kfa/"
-//}
 
 function linkGet() {
     if (selected in users) {
