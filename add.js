@@ -1,31 +1,19 @@
-import { users } from "https://kittenapps-films.github.io/GeoFS_Wiki/GeoFSUsers.js"
 import { get } from 'https://kittenapps-films.github.io/edit/code.js'
 import { Octokit } from "https://esm.sh/@octokit/core";
-import { getContents } from "./getter.js"
-
-/*var url_string = window.location.href; 
-var url = new URL(url_string);
-var user = url.searchParams.get("u");
-
-var url_string = window.location.href; 
-var url = new URL(url_string);
-var link = url.searchParams.get("l");*/
+import { getContents } from "https://kittenapps-films.github.io/GeoFSUsers/getter.js"
 
 export async function update(link,user, edit = false) {
 
-var listOfUsers = getContents()
-
+var listOfUsers = await getContents()
+console.log(listOfUsers)
 const hasUser = user in listOfUsers;
-
+console.log(hasUser)
 if (hasUser) {edit = false};
 
-if (hasUser || edit) {
-  
+if (!hasUser || edit) {
   listOfUsers[user] = link
-  var content = `export var users = ${JSON.stringify(users)}`
-  /*var url_string = window.location.href; 
-  var url = new URL(url_string);
-  var name = url.searchParams.get("n");*/
+  console.log(listOfUsers)
+  var content = `export var users = ${JSON.stringify(listOfUsers)}`
 
   const octokit = new Octokit({
     auth: get(),
@@ -35,6 +23,7 @@ if (hasUser || edit) {
     owner: 'KittenApps-Films',
     repo: 'GeoFS_Wiki',
     path: 'GeoFSUsers.js',
+    branch: 'main',
     headers: {
       'X-GitHub-Api-Version': '2022-11-28'
     }
@@ -57,3 +46,4 @@ if (hasUser || edit) {
   })
 }
 }
+update("brick.com","Go")
