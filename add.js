@@ -44,6 +44,7 @@ if (!hasUser || edit) {
       'X-GitHub-Api-Version': '2022-11-28'
     }
   })
+  console.log(newFile)
 }
 }
 update("brick.com","Go")
